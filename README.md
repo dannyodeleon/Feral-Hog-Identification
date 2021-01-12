@@ -4,7 +4,7 @@ Transfer learning with an object detection model
 
 ## Overview 
 
-Feral hogs are out of control 
+Feral hogs are out of control.  In recent decades, feral pig numbers have grown to unmanagable level, particularly in Texas.  They are considered to be the most destructive invasive species     
 Object detection is a computer vision technique used to locate and identify one or more objects in an image or video.  Various types of object detection algorithms exist today.  The top-preforming algorithms employ CNNs and Deep Neural Network architecture.  Put a picture here of the models.  
 
 These models can 2 broken up in 2 broad categories:
