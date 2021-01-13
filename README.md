@@ -1,42 +1,42 @@
 # Feral Hog Identification
 Transfer learning with an object detection model
-![intro_slide_pic]()
+![intro_slide_pic](YOLO_images/coverhogs.jpg)
 
 
 
-## Overview 
+## Overview
 
-Feral pigs(a.k.a feral hogs, wild hogs, feral swine, razorbacks) are out of control.  In recent decades, feral pig numbers have grown to unmanagable levels, particularly in Texas.  They are widely considered to be the most destructive invasive species in the United States.  Feral hogs cause tremndous damage to crops, livestock, waterways, native plants, wildlife, and local eco-systems.  Their annual damage is estimated to be around 1.5 billion dollars annually.  2.6 million feral pigs reside in Texas, accounting for half of the total US population.  That population is exploding at an estimated 20% growth rate.  Mitigation and control efforts at the Federal, State, and local levels has proved the issue to extrememely challenging. Farmers spend millions in efforts to protect their business and property from feral pigs.  It's not unheard of to lose 10s of thousands of dollars in a single night due to the feral pigs destruction.  As AI and embedded device technologies mature and become more affordable, there is an opportunity to provide relief to those affected by feral pigs.  The goal of this project is to demonstrate the ability to deploy cutting-edge, scaleable object detection models, including tuning/training for a specific application, to quickly create solutions for my team and customers.    
+Feral pigs(a.k.a feral hogs, wild hogs, feral swine, razorbacks) are out of control.  In recent decades, feral pig numbers have grown to unmanagable levels, particularly in Texas.  They are widely considered to be the most destructive invasive species in the United States.  Feral hogs cause tremndous damage to crops, livestock, waterways, native plants, wildlife, and local eco-systems.  Their annual damage is estimated to be around 1.5 billion dollars annually.  2.6 million feral pigs reside in Texas, accounting for half of the total US population.  That population is exploding at an estimated 20% growth rate.  Mitigation and control efforts at the Federal, State, and local levels has proved the issue to extrememely challenging. Farmers spend millions in efforts to protect their business and property from feral pigs.  It's not unheard of to lose tens of thousands of dollars in a single night due to the feral pigs destruction.  As AI and embedded device technologies mature and become more affordable, there is an opportunity to provide relief to those affected by feral pigs.  The goal of this project is to demonstrate the ability to deploy cutting-edge, scaleable object detection models, including tuning/training for a specific application, to quickly create solutions for my team and customers.
 
-## Object Detection  
+## Object Detection
 
-Object detection is a computer vision technique used to locate and identify one or more objects in an image or video.  Object detection combines object localization and classification.  Whereas classification and localization works for only one object in a frame.  Object detection works for mulitple objects as well as multiple instances of an object in a given image.  Various types of object detection algorithms exist today.  The top-preforming algorithms employ CNNs and Deep Neural Network architecture.       
+Object detection is a computer vision technique used to locate and identify one or more objects in an image or video.  Object detection combines object localization and classification.  Whereas classification and localization works for only one object in a frame.  Object detection works for mulitple objects as well as multiple instances of an object in a given image.  Various types of object detection algorithms exist today.  The top-preforming algorithms employ CNNs and Deep Neural Network architecture.
 These models can 2 broken up in 2 broad categories:
 
- 1)Two-stage Detectors(region proposal based framework)
+ * Two-stage Detectors(region proposal based framework)
     More accurate than one-stage detectors.
-   
- 2)One-step Detectors(regression based framework)
-    More suitable for real-time applications as they are much faster and less computationally expensive than two-stage detectors.
-    
-## YOLOv4   
-![Yolo speed diagram]()
-I chose to utilize YOLOv4, a one-step detector, for this project. Though it is not accurate as some of the top preforming two-stage detectors, YOLO is much faster and can be run on a single GPU making it more well-suited for real time applications.  
 
-![yolo architecture]()
-YOLOv4 architecture is composed on 3 main parts:
+ * One-step Detectors(regression based framework)
+    More suitable for real-time applications as they are much faster and less computationally expensive than two-stage detectors.
+
+## YOLOv4
+![Yolo speed diagram](YOLO_images/yolo_coco_markdown.png)
+I chose to utilize YOLOv4, a one-step detector, for this project. Though it is not accurate as some of the top preforming two-stage detectors, YOLO is much faster and can be run on a single GPU making it more well-suited for real time applications.
+
+![yolo architecture](YOLO_images/yolo_block.png)
+YOLOv4 architecture is composed of 3 main parts:
 
  1. Backbone- CSPDenseNet53
  2. Neck- SSP, PAN
- 3. Head- YOLOv3  
- 
-## Transfer Learning/Fine Tuning 
- ![TL_diagram]()
- Transfer learning is a machine learning technique where a model developed for one task is used as a starting point for developing a model for a second task.  For this project, we'll use the convoltional neural network(CSPDarknet53 backbone) and train only the head.  
- 
- The custom dataset was built by collecting ~4000 images in 6 animal classes from Googles Open Images Dataset then converting the image annotations into YOLO format.             
- ![dataset_bargraph]()  
- 
+ 3. Head- YOLOv3
+
+## Transfer Learning/Fine Tuning
+ ![TL_diagram](YOLO_images/TL_markdown.png)
+ Transfer learning is a machine learning technique where a model developed for one task is used as a starting point for developing a model for a second task.  For this project, we'll use the convoltional neural network(CSPDarknet53 backbone) and train only the head.
+
+ The custom dataset was built by collecting ~4000 images in 6 animal classes from Googles Open Images Dataset then converting the image annotations into YOLO format.
+ ![dataset_bargraph](YOLO_images/pig_dataset_distribution.png)
+
 ## Results
 ![pigdogs](YOLO_images/hogs/predicited_images/pigdogs_correct.png)
 
@@ -46,34 +46,37 @@ YOLOv4 architecture is composed on 3 main parts:
 
 
 
-calculation mAP (mean average precision)...
- Detection layer: 139 - type = 28 
- Detection layer: 150 - type = 28 
- Detection layer: 161 - type = 28 
-496
- detections_count = 1265, unique_truth_count = 654  
-class_id = 0, name = Pig, ap = 88.39%   	 (TP = 133, FP = 20) 
-class_id = 1, name = Deer, ap = 91.27%   	 (TP = 153, FP = 13) 
-class_id = 2, name = Fox, ap = 99.43%   	 (TP = 79, FP = 5) 
-class_id = 3, name = Cat, ap = 98.32%   	 (TP = 104, FP = 5) 
-class_id = 4, name = Skunk, ap = 80.65%   	 (TP = 14, FP = 2) 
-class_id = 5, name = Dog, ap = 94.71%   	 (TP = 102, FP = 16) 
+> calculation mAP (mean average precision)...
+> Detection layer: 139 - type = 28
+> Detection layer: 150 - type = 28
+> Detection layer: 161 - type = 28
+> 496
+>  detections_count = 1265, unique_truth_count = 654
+> class_id = 0, name = Pig, ap = 88.39%   	 (TP = 133, FP = 20)
+> class_id = 1, name = Deer, ap = 91.27%   	 (TP = 153, FP = 13)
+> class_id = 2, name = Fox, ap = 99.43%   	 (TP = 79, FP = 5)
+> class_id = 3, name = Cat, ap = 98.32%   	 (TP = 104, FP = 5)
+> class_id = 4, name = Skunk, ap = 80.65%   	 (TP = 14, FP = 2)
+> class_id = 5, name = Dog, ap = 94.71%   	 (TP = 102, FP = 16)
 
- for conf_thresh = 0.25, precision = 0.91, recall = 0.89, F1-score = 0.90 
- for conf_thresh = 0.25, TP = 585, FP = 61, FN = 69, average IoU = 76.59 % 
+ > for conf_thresh = 0.25, precision = 0.91, recall = 0.89, F1-score = 0.90
+ > for conf_thresh = 0.25, TP = 585, FP = 61, FN = 69, average IoU = 76.59 %
 
- IoU threshold = 50 %, used Area-Under-Curve for each unique Recall 
- mean average precision (mAP@0.50) = 0.921259, or 92.13 % 
-Total Detection Time: 11 Seconds
+ > IoU threshold = 50 %, used Area-Under-Curve for each unique Recall
+ > mean average precision (mAP@0.50) = 0.921259, or 92.13 %
+> Total Detection Time: 11 Seconds
 
-![hogs10](https://drive.google.com/drive/folders/1ibWHMbshskmbGwwA4uNixIX8yJc6mrO6)
+![hogs10](YOLO_images/hogs10.gif)
 
-As you can see, though a bit unstable, the detector does seem to locate and identify pigs most of the time. 
+As you can see, though a bit unstable, the detector does seem to locate and identify pigs most of the time.
 
 ## Next Steps
 
-## Acknowlegements/References
 
-ALEXB
-oiVd4toolkit
-wildlife hog federal dept
+## Acknowlegements/References
+![techstack](YOLO_images/techstack.png)
+
+[ALEXAB](https://github.com/AlexeyAB/darknet)
+[OIDv4toolkit](https://github.com/EscVM/OIDv4_ToolKit)
+[USDA Animal and Plant Health Inspection Service](https://www.aphis.usda.gov/aphis/ourfocus/wildlifedamage/operational-activities/feral-swine)
+
