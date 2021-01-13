@@ -1,8 +1,7 @@
 # Feral Hog Identification
-Transfer learning with an object detection model
-![intro_slide_pic](YOLO_images/coverhogs.jpg)
+### Transfer learning with an object detection model
 
-
+ ![intro_slide_pic](YOLO_images/coverhogs.jpg)
 
 ## Overview
 
@@ -20,25 +19,30 @@ These models can 2 broken up in 2 broad categories:
     More suitable for real-time applications as they are much faster and less computationally expensive than two-stage detectors.
 
 ## YOLOv4
-![Yolo speed diagram](YOLO_images/yolo_coco_markdown.png)
+
 I chose to utilize YOLOv4, a one-step detector, for this project. Though it is not accurate as some of the top preforming two-stage detectors, YOLO is much faster and can be run on a single GPU making it more well-suited for real time applications.
 
-![yolo architecture](YOLO_images/yolo_block.png)
+ ![Yolo speed diagram](YOLO_images/yolo_coco_markdown.png)
+
+
 YOLOv4 architecture is composed of 3 main parts:
 
  1. Backbone- CSPDenseNet53
  2. Neck- SSP, PAN
  3. Head- YOLOv3
+ 
+  ![yolo architecture](YOLO_images/yolo_block.png)
 
 ## Transfer Learning/Fine Tuning
  ![TL_diagram](YOLO_images/TL_markdown.png)
  Transfer learning is a machine learning technique where a model developed for one task is used as a starting point for developing a model for a second task.  For this project, we'll use the convoltional neural network(CSPDarknet53 backbone) and train only the head.
 
  The custom dataset was built by collecting ~4000 images in 6 animal classes from Googles Open Images Dataset then converting the image annotations into YOLO format.
+ 
  ![dataset_bargraph](YOLO_images/pig_dataset_distribution.png)
 
 ## Results
-![pigdogs](YOLO_images/hogs/predicited_images/pigdogs_correct.png)
+ ![pigdogs](YOLO_images/hogs/predicited_images/pigdogs_correct.png)
 
 ### Feral Hog Detection Model
 #### Mean Average Precision(Map) = 92.13%
@@ -66,7 +70,7 @@ YOLOv4 architecture is composed of 3 main parts:
  > mean average precision (mAP@0.50) = 0.921259, or 92.13 %
 > Total Detection Time: 11 Seconds
 
-![hogs10](YOLO_images/hogs10.gif)
+ ![hogs10](YOLO_images/hogs10.gif)
 
 As you can see, though a bit unstable, the detector does seem to locate and identify pigs most of the time.
 
