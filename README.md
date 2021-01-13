@@ -35,6 +35,7 @@ YOLOv4 architecture is composed of 3 main parts:
 
 ## Transfer Learning/Fine Tuning
  ![TL_diagram](YOLO_images/TL_markdown.png)
+ 
  Transfer learning is a machine learning technique where a model developed for one task is used as a starting point for developing a model for a second task.  For this project, we'll use the convoltional neural network(CSPDarknet53 backbone) and train only the head.
 
  The custom dataset was built by collecting ~4000 images in 6 animal classes from Googles Open Images Dataset then converting the image annotations into YOLO format.
@@ -42,7 +43,7 @@ YOLOv4 architecture is composed of 3 main parts:
  ![dataset_bargraph](YOLO_images/pig_dataset_distribution.png)
 
 ## Results
- ![pigdogs](YOLO_images/hogs/predicited_images/pigdogs_correct.png)
+ ![pigdogs](YOLO_images/pigdogs_correct.png)
 
 ### Feral Hog Detection Model
 #### Mean Average Precision(Map) = 92.13%
@@ -78,9 +79,11 @@ As you can see, though a bit unstable, the detector does seem to locate and iden
 
 
 ## Acknowlegements/References
-![techstack](YOLO_images/techstack.png)
+![techstack](YOLO_images/tech_stack.png)
 
-[ALEXAB](https://github.com/AlexeyAB/darknet)
-[OIDv4toolkit](https://github.com/EscVM/OIDv4_ToolKit)
+[https://github.com/AlexeyAB/darknet](https://github.com/AlexeyAB/darknet)
+
+[https://github.com/EscVM/OIDv4_ToolKit](https://github.com/EscVM/OIDv4_ToolKit)
+
 [USDA Animal and Plant Health Inspection Service](https://www.aphis.usda.gov/aphis/ourfocus/wildlifedamage/operational-activities/feral-swine)
 
