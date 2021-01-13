@@ -50,26 +50,27 @@ YOLOv4 architecture is composed of 3 main parts:
 ##### Avg Loss after 4800 of 12000 iterations = 1.4
 
 
+```calculation mAP (mean average precision)...
+ Detection layer: 139 - type = 28 
+ Detection layer: 150 - type = 28 
+ Detection layer: 161 - type = 28 
+496
+ detections_count = 1265, unique_truth_count = 654  
+class_id = 0, name = Pig, ap = 88.39%   	 (TP = 133, FP = 20) 
+class_id = 1, name = Deer, ap = 91.27%   	 (TP = 153, FP = 13) 
+class_id = 2, name = Fox, ap = 99.43%   	 (TP = 79, FP = 5) 
+class_id = 3, name = Cat, ap = 98.32%   	 (TP = 104, FP = 5) 
+class_id = 4, name = Skunk, ap = 80.65%   	 (TP = 14, FP = 2) 
+class_id = 5, name = Dog, ap = 94.71%   	 (TP = 102, FP = 16) 
 
-> calculation mAP (mean average precision)...
-> Detection layer: 139 - type = 28
-> Detection layer: 150 - type = 28
-> Detection layer: 161 - type = 28
-> 496
->  detections_count = 1265, unique_truth_count = 654
-> class_id = 0, name = Pig, ap = 88.39%   	 (TP = 133, FP = 20)
-> class_id = 1, name = Deer, ap = 91.27%   	 (TP = 153, FP = 13)
-> class_id = 2, name = Fox, ap = 99.43%   	 (TP = 79, FP = 5)
-> class_id = 3, name = Cat, ap = 98.32%   	 (TP = 104, FP = 5)
-> class_id = 4, name = Skunk, ap = 80.65%   	 (TP = 14, FP = 2)
-> class_id = 5, name = Dog, ap = 94.71%   	 (TP = 102, FP = 16)
+ for conf_thresh = 0.25, precision = 0.91, recall = 0.89, F1-score = 0.90 
+ for conf_thresh = 0.25, TP = 585, FP = 61, FN = 69, average IoU = 76.59 % 
 
- > for conf_thresh = 0.25, precision = 0.91, recall = 0.89, F1-score = 0.90
- > for conf_thresh = 0.25, TP = 585, FP = 61, FN = 69, average IoU = 76.59 %
+ IoU threshold = 50 %, used Area-Under-Curve for each unique Recall 
+ mean average precision (mAP@0.50) = 0.921259, or 92.13 % 
+Total Detection Time: 11 Seconds
+```
 
- > IoU threshold = 50 %, used Area-Under-Curve for each unique Recall
- > mean average precision (mAP@0.50) = 0.921259, or 92.13 %
-> Total Detection Time: 11 Seconds
 
  ![hogs10](YOLO_images/hogs10.gif)
 
