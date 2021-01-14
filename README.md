@@ -70,8 +70,9 @@ class_id = 5, name = Dog, ap = 94.71%   	 (TP = 102, FP = 16)
  mean average precision (mAP@0.50) = 0.921259, or 92.13 % 
 Total Detection Time: 11 Seconds
 ```
+* The Skunk class, unsurprisingly, had the lowest average precision(80.65%) of all classes as it was very imbalanced due to the lack of annotated skunk images in the Open Images dataset.  
 
-
+### Real Time Detection
  ![hogs10](YOLO_images/hogs10.gif)
 
 As you can see, though a bit unstable, the detector does seem to locate and identify pigs most of the time.  
