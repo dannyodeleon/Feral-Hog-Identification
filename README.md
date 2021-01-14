@@ -5,11 +5,11 @@
 
 ## Overview
 
-Feral pigs(a.k.a feral hogs, wild hogs, feral swine, razorbacks) are out of control.  In recent decades, feral pig numbers have grown to unmanagable levels, particularly in Texas.  They are widely considered to be the most destructive invasive species in the United States.  Feral hogs cause tremndous damage to crops, livestock, waterways, native plants, wildlife, and local eco-systems.  Their annual damage is estimated to be around 1.5 billion dollars annually.  2.6 million feral pigs reside in Texas, accounting for half of the total US population.  That population is exploding at an estimated 20% growth rate.  Mitigation and control efforts at the Federal, State, and local levels has proved the issue to extrememely challenging. Farmers spend millions in efforts to protect their business and property from feral pigs.  It's not unheard of to lose tens of thousands of dollars in a single night due to the feral pigs destruction.  As AI and embedded device technologies mature and become more affordable, there is an opportunity to provide relief to those affected by feral pigs.  The goal of this project is to demonstrate the ability to deploy cutting-edge, scaleable object detection models, including tuning/training for a specific application, to quickly create solutions for my team and customers.
+Feral pigs(a.k.a feral hogs, wild hogs, feral swine, razorbacks) are out of control.  In recent decades, feral pig numbers have grown to unmanageable levels, particularly in Texas.  They are widely considered to be the most destructive invasive species in the United States.  Feral hogs cause tremendous damage to crops, livestock, waterways, native plants, wildlife, and local eco-systems.  Their annual damage is estimated to be around 1.5 billion dollars annually.  2.6 million feral pigs reside in Texas, accounting for half of the total US population.  That population is exploding at an estimated 20% growth rate.  Mitigation and control efforts at the federal, state, and local levels has proven the issue to be extremely challenging. Farmers spend millions in efforts to protect their business and property from feral pigs.  It's not unheard of to lose tens of thousands of dollars in a single night due to the feral pigs destruction.  As AI and embedded device technologies mature and become more affordable, there is an opportunity to provide relief to those affected by feral pigs.  The goal of this project is to demonstrate the ability to deploy cutting-edge, scaleable object detection models, including tuning/training for a specific application, to quickly create solutions for my team and customers.
 
 ## Object Detection
 
-Object detection is a computer vision technique used to locate and identify one or more objects in an image or video.  Object detection combines object localization and classification.  Whereas classification and localization works for only one object in a frame.  Object detection works for mulitple objects as well as multiple instances of an object in a given image.  Various types of object detection algorithms exist today.  The top-preforming algorithms employ CNNs and Deep Neural Network architecture.
+Object detection is a computer vision technique used to locate and identify one or more objects in an image or video.  Object detection combines object localization and classification.  Whereas classification and localization works for only one object in a frame.  Object detection works for multiple objects as well as multiple instances of an object in a given image.  Various types of object detection algorithms exist today.  The top-preforming algorithms employ CNNs and Deep Neural Network architecture.
 These models can 2 broken up in 2 broad categories:
 
  * Two-stage Detectors(region proposal based framework)
@@ -20,14 +20,14 @@ These models can 2 broken up in 2 broad categories:
 
 ## YOLOv4
 
-I chose to utilize YOLOv4, a one-step detector, for this project. Though it is not accurate as some of the top preforming two-stage detectors, YOLO is much faster and can be run on a single GPU making it more well-suited for real time applications.
+I chose to utilize YOLOv4, a one-step detector, for this project. Though it is not accurate as some of the top preforming two-stage detectors, YOLOv4 can be trained on a single GPU and the model is much making it well-suited for real time applications.
 
  ![Yolo speed diagram](YOLO_images/yolo_coco_markdown.png)
 
 
 YOLOv4 architecture is composed of 3 main parts:
 
- 1. Backbone- CSPDenseNet53
+ 1. Backbone- CSPDarkNet53
  2. Neck- SSP, PAN
  3. Head- YOLOv3
  
@@ -36,7 +36,7 @@ YOLOv4 architecture is composed of 3 main parts:
 ## Transfer Learning/Fine Tuning
  ![TL_diagram](YOLO_images/TL_markdown.png)
  
- Transfer learning is a machine learning technique where a model developed for one task is used as a starting point for developing a model for a second task.  For this project, we'll use the convoltional neural network(CSPDarknet53 backbone) and train only the head.
+ Transfer learning is a machine learning technique where a model developed for one task is used as a starting point for developing a model for a second task.  For this project, we'll use the convolutional neural network(CSPDarknet53 backbone) and train only the head.
 
  The custom dataset was built by collecting ~4000 images in 6 animal classes from Googles Open Images Dataset then converting the image annotations into YOLO format.
  
@@ -74,12 +74,19 @@ Total Detection Time: 11 Seconds
 
  ![hogs10](YOLO_images/hogs10.gif)
 
-As you can see, though a bit unstable, the detector does seem to locate and identify pigs most of the time.
+As you can see, though a bit unstable, the detector does seem to locate and identify pigs most of the time.  
+A clip of video was converted to a GIF in order to render in this markdown file.  This GIF is very choppy. 
 
 ## Next Steps
 
+* Continue training and improving the model.
 
-## Acknowlegements/References
+* Build a custom dataset for feral pigs including common livestock and wildlife with an emphasis on infrared images. 
+
+* Build a version of YOLO in TensorFlow for real-time detection through a mobile phone webcam. 
+
+
+## Acknowledgements/References
 ![techstack](YOLO_images/tech_stack.png)
 
 [https://github.com/AlexeyAB/darknet](https://github.com/AlexeyAB/darknet)
